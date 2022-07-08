@@ -1,0 +1,1169 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "namespaceName": "[concat(uniqueString(resourceGroup().id),'nsp')]",
+    "nameSpaceRuleName": "[concat('rule')]",
+    "eventHubName": "[concat('eventhub')]",
+    "consumerGroupName": "[concat('consumerGroup')]",
+    "authorizationRuleName": "[concat('authorizationRule')]"
+
+  },
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule0')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule1')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule2')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Send" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule3')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule4')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule5')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule6')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule7')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule8')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule9')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule10')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/authorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(variables('namespaceName'), '/', 'rule11')]",
+      "properties": {
+        "rights": [ "Send", "Listen", "Manage" ]
+      },
+      "dependsOn": [
+
+        "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+      ]
+
+    },
+    {
+      "apiVersion": "2018-01-01-preview",
+      "name": "[variables('namespaceName')]",
+      "type": "Microsoft.EventHub/namespaces",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "isAutoInflateEnabled": true,
+        "maximumThroughputUnits": 7
+      },
+      "resources": [
+
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[concat(variables('eventHubName'),'0')]",
+          "type": "eventhubs",
+          "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+          ],
+          "properties": {
+            "messageRetentionInDays": 4,
+            "partitionCount": 4
+          },
+
+          "resources": [
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'0')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'1')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'2')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'3')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'4')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'5')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'6')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'7')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'8')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'9')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'10')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'11')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'12')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'13')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'14')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('consumerGroupName'),'15')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'0')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'1')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'2')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'3')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'4')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'5')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'6')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'7')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'8')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'9')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'10')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'0',variables('authorizationRuleName'),'11')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'0'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            }
+            
+
+          ]
+        },
+         {
+          "apiVersion": "2017-04-01",
+          "name": "[concat(variables('eventHubName'),'1')]",
+          "type": "eventhubs",
+          "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+          ],
+          "properties": {
+            "messageRetentionInDays": 4,
+            "partitionCount": 4
+          },
+
+          "resources": [
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'0')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'1')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'2')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'3')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'4')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'5')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'6')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'7')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'8')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'9')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'10')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'11')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'12')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'13')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'14')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('consumerGroupName'),'15')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'0')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'1')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'2')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'3')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'4')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'5')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'6')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'7')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+       
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'9')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'10')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'11')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'1',variables('authorizationRuleName'),'12')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'1'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            }
+
+          ]
+        },
+
+         {
+          "apiVersion": "2017-04-01",
+          "name": "[concat(variables('eventHubName'),'2')]",
+          "type": "eventhubs",
+          "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/', variables('namespaceName'))]"
+          ],
+          "properties": {
+            "messageRetentionInDays": 4,
+            "partitionCount": 4
+          },
+
+          "resources": [
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'0')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'1')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'2')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'3')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'4')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'5')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'6')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'7')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'8')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'9')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'10')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'11')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'12')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'13')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'14')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('consumerGroupName'),'15')]",
+              "type": "consumergroups",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "userMetadata": "User Metadata"
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'0')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'1')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'2')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'3')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'4')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'5')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'6')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'7')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'8')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'9')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'11')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[concat(variables('eventHubName'),'2',variables('authorizationRuleName'),'12')]",
+              "type": "authorizationRules",
+              "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs/', variables('namespaceName'),concat(variables('eventHubName'),'2'))]"
+              ],
+              "properties": {
+                "rights": [ "Send", "Listen", "Manage" ]
+              }
+            }
+
+          ]
+        }
+
+      ]
+    }
+  ],
+  "outputs": {
+  }
+}

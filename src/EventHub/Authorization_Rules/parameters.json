@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+   
+    "namespaceName": {
+      "value": "mynaa3dsmespace121541"
+    },
+    "namespaceAuthorizationRuleName": {
+      "value": "namespaceauthrule"
+    },
+    "eventHubName": {
+      "value": "myeventhub"
+    },
+    "eventhubAuthorizationRuleName": {
+      "value": "myeventhubauthrule"
+    },
+    "eventhubAuthorizationRuleName1": {
+      "value": "myeventhubauthrule2"
+    },
+    "consumerGroupName": {
+      "value": "consumer1"
+    },
+    "location": {
+      "value": "East US"
+    }
+  }
+}

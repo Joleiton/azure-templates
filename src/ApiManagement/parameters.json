@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "publisherEmail": {
+          "value": "email@example.com"
+      },
+      "publisherName": {
+          "value": "templateTest"
+      },
+      "virtualNetworkName": {
+          "value": "GEN-VNET-NAME"
+      },
+      "subnetName": {
+          "value": "GEN-VNET-SUBNET1-NAME"
+      },
+      "subnet0ServiceEndpoints": {
+        "value": [
+            {
+                "service": "Microsoft.Storage"
+            },
+            {
+                "service": "Microsoft.Sql"
+            },
+            {
+                "service": "Microsoft.EventHub"
+            }
+        ]
+      },
+      "subnet1ServiceEndpoints": {
+        "value": [
+            {
+                "service": "Microsoft.Storage"
+            },
+            {
+                "service": "Microsoft.Sql"
+            },
+            {
+                "service": "Microsoft.EventHub"
+            }
+        ]
+      },
+      "subnet2ServiceEndpoints": {
+          "value": [
+              {
+                  "service": "Microsoft.Storage"
+              },
+              {
+                  "service": "Microsoft.Sql"
+              },
+              {
+                  "service": "Microsoft.EventHub"
+              }
+          ]
+      },
+      "location": {
+        "value": "East US"
+      },
+
+      "subnet0Prefix" : {
+        "value": "10.0.0.0/24"
+      },
+      "subnet1Prefix" : {
+        "value": "10.0.1.0/24"
+      },
+      "subnet2Prefix" : {
+        "value": "10.0.2.0/24"
+      },
+      "deploymentName_" : {
+        "value": "prod"
+      },
+      
+    
+      "publicIpSku_VM" : {
+        "value": "Basic"
+      },
+    
+      "clientCIDR" : {
+        "value": "167.220.24.44"
+      },
+      
+      "vm0Name":{
+        "value": "jumpbox"
+      },
+      "vm0AdminUsername":{
+           "value": "robotjl"
+      },
+      "vm0AdminPassword":{
+        "value": "005M33tcafe.."
+      },
+    
+      "vm0OSVersion" : {
+        "value": "2019-Datacenter"
+        
+      },
+      "managedDisk_storageAccountType" : {
+        "value": "Standard_LRS"
+      }
+  }
+  
+}
